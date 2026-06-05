@@ -2,47 +2,84 @@
 
 ## Overview
 
-Kerberoasting is an Active Directory attack technique allowing authenticated users to request Kerberos service tickets (TGS) associated with Service Principal Names (SPNs), which can then be cracked offline to recover service account passwords.
+Kerberoasting is an Active Directory attack technique that targets service accounts associated with Service Principal Names (SPNs).
 
-## Why It Matters
+The technique allows authenticated domain users to request Kerberos service tickets and perform offline password cracking attacks against service account credentials.
 
-Weak service account passwords remain common in enterprise environments and may lead to:
+Kerberoasting remains one of the most common privilege escalation techniques identified during internal penetration tests and Active Directory security assessments.
 
-- Privilege escalation
-- Lateral movement
-- Domain compromise
+---
 
-## Typical Attack Workflow
+## Objectives
 
-1. Enumerate SPNs
-2. Request TGS tickets
-3. Extract Kerberos hashes
+The primary objective of Kerberoasting is to obtain service account credentials that may provide elevated privileges within the environment.
+
+Successful compromise of service accounts can lead to:
+
+* Privilege escalation
+* Lateral movement
+* Access to critical infrastructure
+* Domain compromise
+
+---
+
+## Why Kerberoasting Matters
+
+Many organizations assign excessive privileges to service accounts while using weak or outdated password management practices.
+
+Service accounts frequently possess:
+
+* Local administrator rights
+* Administrative access to servers
+* Access to databases
+* Access to backup systems
+* Domain-level privileges
+
+---
+
+## Kerberoasting Attack Chain
+
+1. Identify SPNs
+2. Request Kerberos service tickets
+3. Extract ticket material
 4. Perform offline password cracking
-5. Reuse compromised credentials
+5. Validate credentials
+6. Assess privileges
+7. Expand access
 
-## Common Tools
+---
 
-- Impacket
-- Rubeus
-- Hashcat
+## Common Targets
 
-## Detection Considerations
+* SQL Service Accounts
+* IIS Service Accounts
+* SCCM Service Accounts
+* Backup Service Accounts
+* Monitoring Service Accounts
 
-Potential indicators include:
+---
 
-- Unusual volume of TGS requests
-- Service ticket enumeration activity
-- Kerberos anomalies
+## Enterprise Risks
 
-## Mitigation Recommendations
+* Credential exposure
+* Privilege escalation
+* Lateral movement
+* Domain compromise
 
-- Strong service account passwords
-- Group Managed Service Accounts (gMSA)
-- Least privilege principles
-- Kerberos monitoring
+---
+
+## Defensive Considerations
+
+* Strong passwords
+* gMSA deployment
+* Service account reviews
+* Privilege reduction
+* Kerberos monitoring
+
+---
 
 ## References
 
-- MITRE ATT&CK T1558.003
-- SpecterOps
-- Microsoft Security Guidance
+* SpecterOps Research
+* Microsoft Security Guidance
+* MITRE ATT&CK
