@@ -2,34 +2,72 @@
 
 ## Overview
 
-Lateral movement techniques are commonly used during internal penetration tests and assumed breach scenarios to move across enterprise environments after initial access.
+Lateral movement refers to techniques used by attackers to move from one compromised system to another within an environment.
 
-## Common Techniques
+In Active Directory environments, lateral movement often represents the transition between initial access and privileged compromise.
 
-- Pass-the-Hash
-- Remote Service Abuse
-- SMB Lateral Movement
-- Credential Reuse
-- Token Manipulation
+Understanding lateral movement is essential during internal penetration tests, assumed breach scenarios, and Active Directory assessments.
 
-## Assessment Objectives
+---
 
-- Identify weak segmentation
-- Evaluate privilege boundaries
-- Assess credential exposure
-- Validate attack paths
+# Objectives
 
-## Common Tools
+The goal of lateral movement is to:
 
-- Impacket
-- CrackMapExec
-- PsExec
-- RDP
-- SMBExec
+* Expand access
+* Reach critical systems
+* Access privileged accounts
+* Escalate privileges
+* Reach Tier 0 assets
 
-## Defensive Considerations
+---
 
-- Network segmentation
-- Privileged account separation
-- LAPS/gMSA
-- Monitoring remote execution activity
+# Common Lateral Movement Sources
+
+* Credential reuse
+* Administrative privileges
+* Session exposure
+* Remote administration protocols
+* Delegation abuse
+
+---
+
+# Enterprise Risks
+
+Successful lateral movement may lead to:
+
+* Domain compromise
+* Credential theft
+* Privilege escalation
+* Persistence
+* Data exposure
+
+---
+
+# Common Protocols
+
+* SMB
+* RDP
+* WinRM
+* WMI
+* RPC
+
+---
+
+# Assessment Focus
+
+During assessments, evaluate:
+
+* Local administrator relationships
+* Session exposure
+* Administrative segmentation
+* Credential management
+* Tier 0 exposure
+
+---
+
+# References
+
+* MITRE ATT&CK
+* SpecterOps Research
+* Microsoft Security Guidance
